@@ -1,3 +1,5 @@
+// NOTA: Esta classe é  (objeto banco)  Entities/ORM - Camada de acessso a dados -> Camada de Servico 
+//---------------------------------------------------------------------------
 package com.devsuperior.dslist.entities;
 
 import java.util.Objects;
@@ -10,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // ORM - configurar minha classe para ser um tabela do banco relaciona.
-@Table(name = "tb_game")
+@Table(name = "tb_game") // nome da tabela que vou criar no banco H2
 public class Game {
 
     @Id
@@ -31,9 +33,11 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
+    // metodo construtor
     public Game() {
     }
 
+    // metodo construtor com argumentos
     public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
             String shortDescription, String longDescription) {
         this.id = id;
@@ -119,6 +123,7 @@ public class Game {
         this.longDescription = longDescription;
     }
 
+    // metodos hashCode e equals, importante para validar registros iquais no banco.
     @Override
     public int hashCode() {
         final int prime = 31;
