@@ -1,4 +1,5 @@
 // NOTA: Esta classe é (CAmada de dados)- Camada (DTO) Data Transfer Objects
+// Obtenho apenas alguns campos da tabela tb_game.
 //---------------------------------------------------------------------------
 package com.devsuperior.dslist.dto;
 
