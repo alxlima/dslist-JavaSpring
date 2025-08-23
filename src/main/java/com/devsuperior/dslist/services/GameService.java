@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.devsuperior.dslist.dto.GameDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
 import com.devsuperior.dslist.repositories.GameRepository;
 
 //@Component // usado como extensão do jpa como injeção de dependencias.
@@ -45,4 +46,17 @@ public class GameService {
         // Exemplo:01
         return result.stream().map(x -> new GameMinDTO(x)).toList();
     }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        // return games.stream().map(GameMinDTO::new).toList(); // Original back
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
+    }
+
+    // @Transactional(readOnly = true)
+    // public List<GameMinDTO> findByGameList(Long listId) {
+    // List<GameMinProjection> games = gameRepository.searchByList(listId);
+    // return games.stream().map(GameMinDTO::new).toList();
+    // }
 }
